@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALPHA — Academic Learning & Problem-solving Helper Assistant</title>
+<style>
+:root{--bg:#080b12;--panel:#101522;--panel2:#151b2b;--text:#eef2ff;--muted:#9aa6bf;--accent:#7c5cff;--accent2:#20d6a3;--danger:#ff6577;--line:#242c40;--shadow:0 20px 60px #0008}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#20204a 0,#080b12 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+#app{min-height:100vh}.welcome{min-height:100vh;display:grid;place-items:center;padding:30px}
+.hero{max-width:900px;text-align:center}.logo{width:86px;height:86px;border-radius:26px;margin:0 auto 20px;background:linear-gradient(135deg,var(--accent),#21c8ff);display:grid;place-items:center;font-weight:900;font-size:32px;box-shadow:0 15px 50px #6f55ff55}
+h1{font-size:clamp(42px,7vw,76px);margin:0;letter-spacing:-3px}.tag{color:var(--muted);font-size:18px;line-height:1.6;max-width:680px;margin:16px auto 28px}
+.badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.badge{border:1px solid var(--line);background:#ffffff08;padding:8px 13px;border-radius:999px;color:#cdd5e8;font-size:13px}
+.start{margin-top:30px;border:0;color:white;background:linear-gradient(135deg,var(--accent),#4f9cff);padding:15px 28px;border-radius:14px;font-weight:800;box-shadow:0 12px 35px #6f55ff44}
+.small{color:var(--muted);font-size:12px;margin-top:18px}
+.shell{display:none;min-height:100vh}.top{height:68px;border-bottom:1px solid var(--line);background:#090d15dd;backdrop-filter:blur(14px);display:flex;align-items:center;padding:0 18px;gap:14px;position:sticky;top:0;z-index:5}.brand{font-weight:900;letter-spacing:-.5px}.brand span{color:var(--accent2)}.developer{margin-left:auto;color:var(--muted);font-size:12px}
+.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 68px)}.side{border-right:1px solid var(--line);padding:18px 12px;background:#0b0f18}.nav{width:100%;padding:12px;border:1px solid transparent;background:transparent;color:#aab4ca;text-align:left;border-radius:11px;margin-bottom:6px}.nav.active,.nav:hover{background:#ffffff09;color:white;border-color:var(--line)}.side-note{margin-top:25px;padding:13px;border:1px solid var(--line);border-radius:13px;color:var(--muted);font-size:12px;line-height:1.5}
+main{padding:24px;max-width:1200px;width:100%;margin:auto}.view{display:none}.view.active{display:block}.grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.card{background:linear-gradient(180deg,#111827,#0e1420);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 8px 35px #0003}.card h2,.card h3{margin-top:0}.muted{color:var(--muted)}.chat{height:58vh;display:flex;flex-direction:column}.messages{flex:1;overflow:auto;padding:5px}.msg{max-width:82%;padding:12px 14px;border-radius:15px;margin:9px 0;line-height:1.55;white-space:pre-wrap}.bot{background:#171e2e;border:1px solid var(--line)}.user{margin-left:auto;background:#4f3fc4}.composer{display:flex;gap:8px;margin-top:10px}.composer input{flex:1;background:#0b101a;border:1px solid var(--line);color:white;border-radius:12px;padding:13px}.primary{background:var(--accent);border:0;color:white;padding:12px 16px;border-radius:11px;font-weight:700}.ghost{background:#ffffff08;border:1px solid var(--line);color:#dbe3f5;padding:10px 13px;border-radius:10px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.chip{background:#ffffff08;border:1px solid var(--line);color:#cbd5e1;border-radius:999px;padding:7px 10px;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:13px;border:1px solid var(--line);border-radius:13px;background:#ffffff05}.stat b{font-size:22px}.quiz-q{font-size:20px;line-height:1.4;margin:18px 0}.option{display:block;width:100%;text-align:left;background:#0b1019;color:#dfe6f7;border:1px solid var(--line);padding:12px;border-radius:11px;margin:8px 0}.option:hover{border-color:#6654e8}.correct{border-color:var(--accent2)!important;background:#0b2a22!important}.wrong{border-color:var(--danger)!important;background:#30131a!important}
+input[type=file]{display:none}.upload{display:inline-block}.resource a{color:#8eb4ff;text-decoration:none}.resource a:hover{text-decoration:underline}.subject{font-size:12px;color:var(--accent2);font-weight:800;letter-spacing:.8px;text-transform:uppercase}
+textarea{width:100%;min-height:220px;background:#0b1019;color:white;border:1px solid var(--line);border-radius:12px;padding:12px;resize:vertical}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px}.nav{min-width:120px;margin:0 4px}.side-note{display:none}.grid{grid-template-columns:1fr}.developer{display:none}}
+</style>
+</head>
+<body>
+<div id="app">
+<section class="welcome" id="welcome">
+  <div class="hero">
+    <div class="logo">A</div>
+    <h1>ALPHA</h1>
+    <div style="font-weight:800;color:#cbd5e1;margin-top:6px">Academic Learning & Problem-solving Helper Assistant</div>
+    <p class="tag">A focused study companion for Classes 8–9 CBSE + JEE foundation. Ask doubts, practise quizzes, revise concepts, and keep your learning organised.</p>
+    <div class="badges"><span class="badge">CBSE 8–9</span><span class="badge">JEE Foundation</span><span class="badge">Quiz Mode</span><span class="badge">Narayana resources</span><span class="badge">Dark theme</span></div>
+    <button class="start" onclick="enterApp()">Enter ALPHA →</button>
+    <div class="small">Developer: AYUSH ANIKET · Prototype build</div>
+  </div>
+</section>
+
+<section class="shell" id="shell">
+<header class="top"><div class="brand">A<span>LPHA</span></div><div class="developer">Developer · AYUSH ANIKET</div></header>
+<div class="layout">
+<aside class="side">
+<button class="nav active" onclick="showView('chat',this)">💬 Ask ALPHA</button>
+<button class="nav" onclick="showView('quiz',this)">🧠 Quiz Lab</button>
+<button class="nav" onclick="showView('resources',this)">🔗 Resources</button>
+<button class="nav" onclick="showView('knowledge',this)">📚 Knowledge Pack</button>
+<div class="side-note"><b>Important:</b> ALPHA's included knowledge is a starter set. To make it genuinely specific to your Narayana HSR materials, add your own authorised notes/textbook extracts in Knowledge Pack.</div>
+</aside>
+<main>
+<section class="view active" id="chat">
+<div class="grid">
+<div class="card chat">
+<div><div class="subject">AI Study Chat</div><h2>What are you learning today?</h2><div class="chips">
+<button class="chip" onclick="ask('Explain photosynthesis for Class 8 in simple steps')">Photosynthesis</button>
+<button class="chip" onclick="ask('Explain linear equations for Class 8')">Linear equations</button>
+<button class="chip" onclick="ask('Give me a JEE foundation question on motion')">JEE foundation</button>
+</div></div>
+<div class="messages" id="messages"></div>
+<div class="composer"><input id="q" placeholder="Ask a question… e.g. Why is acceleration important?" onkeydown="if(event.key==='Enter')send()"><button class="primary" onclick="send()">Ask</button></div>
+</div>
+<div class="card"><div class="subject">Study dashboard</div><h3>ALPHA today</h3><div class="stats"><div class="stat"><b id="asked">0</b><div class="muted">Questions</div></div><div class="stat"><b id="score">0</b><div class="muted">Quiz points</div></div><div class="stat"><b id="pack">0</b><div class="muted">Added notes</div></div></div><hr style="border-color:var(--line);border-width:1px 0 0;margin:20px 0"><p class="muted">Tip: Ask for a <b>concept</b>, <b>worked example</b>, <b>quiz</b>, or <b>revision plan</b>.</p></div>
+</div>
+</section>
+
+<section class="view" id="quiz"><div class="card"><div class="subject">Quiz Lab</div><h2 id="quizTitle">Quick Mixed Quiz</h2><p class="muted" id="quizMeta"></p><div id="quizBox"></div><div id="quizControls"></div></div></section>
+
+<section class="view" id="resources"><div class="card"><div class="subject">Official / useful resources</div><h2>Narayana learning links</h2>
+<div class="resource"><p>🏫 <a href="https://www.narayanaschools.in/" target="_blank">Narayana Schools</a> — official school network.</p>
+<p>🎓 <a href="https://narayanagroup.com/academics" target="_blank">Narayana Academics</a> — programmes for Classes 6–10 and competitive preparation.</p>
+<p>🌐 <a href="https://narayanagroup.com/" target="_blank">Narayana Educational Institutions</a> — official group site, including answer/solution resources.</p>
+<p>📍 <a href="https://www.narayanaschools.in/karnataka" target="_blank">Narayana Schools Karnataka</a> — Karnataka information.</p>
+<p>▶️ <a href="https://www.youtube.com/@thenarayanagroup" target="_blank">Narayana Group on YouTube</a> — official-channel videos when available.</p></div>
+<hr style="border-color:var(--line);border-width:1px 0 0;margin:20px 0">
+<p class="muted">ALPHA intentionally links to official resources rather than copying protected textbook/video content.</p></div></section>
+
+<section class="view" id="knowledge"><div class="grid"><div class="card"><div class="subject">Knowledge Pack</div><h2>Add your authorised study material</h2><p class="muted">For the full Narayana-specific version, load text/notes that you are allowed to use. ALPHA will search them when answering.</p>
+<label class="ghost upload">📄 Add TXT/JSON<input id="file" type="file" accept=".txt,.json" multiple></label>
+<textarea id="notes" placeholder="Or paste your authorised notes here…"></textarea><button class="primary" onclick="saveNotes()">Add to ALPHA</button></div>
+<div class="card"><div class="subject">Current scope</div><h3>Built-in starter knowledge</h3><ul class="muted"><li>CBSE Classes 8–9 concept explanations</li><li>JEE-foundation style reasoning</li><li>Science, Maths, English and study skills</li><li>Original practice questions</li><li>Official Narayana resource links</li></ul><p class="muted">This is not a copy of Narayana's proprietary textbooks. Upload authorised material to build a private study corpus.</p></div></div></section>
+</main></div></section>
+</div>
+
+<script>
+const KB=[
+{keys:['photosynthesis','chlorophyll'],a:"Photosynthesis is the process by which green plants make food using light energy.\\n\\n1. Chlorophyll absorbs sunlight.\\n2. Roots supply water.\\n3. Leaves take in carbon dioxide.\\n4. Light energy helps convert water + carbon dioxide into glucose.\\n5. Oxygen is released as a by-product.\\n\\nClass 8 tip: remember the inputs as CO₂ + H₂O + light, and the main food product as glucose."},
+{keys:['linear equation','equation'],a:"A linear equation has the variable only to the first power. Example: 3x + 5 = 20.\\nSubtract 5: 3x = 15.\\nDivide by 3: x = 5.\\n\\nCheck: 3(5)+5 = 20, so the answer is consistent."},
+{keys:['force','motion','acceleration'],a:"Force can change an object's motion. Acceleration measures how quickly velocity changes: a = (v − u)/t.\\n\\nFor JEE foundation, always identify initial velocity (u), final velocity (v), time (t), then choose the equation that matches the known quantities."},
+{keys:['rational number'],a:"A rational number can be written as p/q, where p and q are integers and q ≠ 0. Examples: 3/5, −7/2 and 4 (=4/1). A decimal terminating or repeating periodically is rational."},
+{keys:['cell'],a:"The cell is the basic structural and functional unit of life. Important parts include the cell membrane, cytoplasm and nucleus in typical eukaryotic cells. Plant cells additionally have a cell wall, chloroplasts and a large central vacuole."},
+{keys:['matter','states'],a:"Matter commonly occurs as solids, liquids and gases. Solids have fixed shape and volume; liquids have fixed volume but take the container's shape; gases have neither fixed shape nor fixed volume. Particle spacing and motion explain these differences."},
+{keys:['study plan','revision'],a:"A sustainable revision cycle is: learn → solve 5–10 basic questions → solve 3–5 application questions → check errors → revisit after 1 day, 1 week and 1 month. Keep an error log instead of repeatedly rereading the same notes."},
+{keys:['quadratic'],a:"Quadratic equations are equations of the form ax²+bx+c=0, with a≠0. In Classes 8–9 you may encounter the idea as a foundation topic; for JEE foundation, focus on factorisation and understanding graphs before memorising formulas."}
+];
+let custom=[];
+let asked=0,score=0;
+function enterApp(){document.getElementById('welcome').style.display='none';document.getElementById('shell').style.display='block';bot("Hi! I'm ALPHA. Ask me a Class 8–9 CBSE or JEE-foundation question. I’ll explain it step-by-step and tell you when an answer is only a starter explanation.");}
+function showView(id,btn){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));btn.classList.add('active');if(id==='quiz')startQuiz();}
+function bot(t){let d=document.createElement('div');d.className='msg bot';d.textContent=t;document.getElementById('messages').appendChild(d);document.getElementById('messages').scrollTop=999999;}
+function user(t){let d=document.createElement('div');d.className='msg user';d.textContent=t;document.getElementById('messages').appendChild(d);document.getElementById('messages').scrollTop=999999;}
+function ask(t){document.getElementById('q').value=t;send();}
+function send(){let q=document.getElementById('q').value.trim();if(!q)return;user(q);document.getElementById('q').value='';asked++;document.getElementById('asked').textContent=asked;
+let all=[...custom,...KB];let ql=q.toLowerCase();let hit=all.find(x=>x.keys.some(k=>ql.includes(k)));
+let ans=hit?hit.a:"I don't have enough source material to give a Narayana-specific answer yet. Try asking for a core CBSE concept (for example, photosynthesis, force, cells, rational numbers or linear equations), or add your authorised notes in Knowledge Pack.\\n\\nFor a reliable study answer, I can also help you break the question into: concept → formula/rule → worked example → practice question.";
+if(/quiz|test|mcq|question me/.test(ql)) ans+="\\n\\nYou can switch to Quiz Lab for an interactive quiz.";
+setTimeout(()=>bot(ans),180);
+}
+document.getElementById('file').addEventListener('change',async e=>{for(const f of e.target.files){let text=await f.text();if(f.name.endsWith('.json')){try{let j=JSON.parse(text);text=JSON.stringify(j)}catch{}}custom.push({keys:text.toLowerCase().split(/\\W+/).filter(x=>x.length>5).slice(0,35),a:"From your Knowledge Pack:\\n\\n"+text.slice(0,5000)});document.getElementById('pack').textContent=custom.length;}});
+function saveNotes(){let t=document.getElementById('notes').value.trim();if(!t)return;custom.push({keys:t.toLowerCase().split(/\\W+/).filter(x=>x.length>5).slice(0,40),a:"From your Knowledge Pack:\\n\\n"+t.slice(0,6000)});document.getElementById('notes').value='';document.getElementById('pack').textContent=custom.length;bot("Added your notes to the local Knowledge Pack. I can now retrieve them for matching questions.");}
+const quizzes=[
+{t:'Science · Cells',qs:[
+["Which structure controls many activities of a cell?",["Cell wall","Nucleus","Vacuole","Chloroplast"],1],
+["Which structure is characteristic of plant cells and performs photosynthesis?",["Chloroplast","Ribosome","Nucleus","Cell membrane"],0],
+["The cell membrane is best described as:",["Completely rigid","Selectively permeable","Made only of cellulose","Absent in animal cells"],1]]},
+{t:'Maths · Foundations',qs:[
+["Solve: 2x + 6 = 16.",["3","4","5","6"],2],
+["Which is rational?",["√2","π","7/9","√3"],2],
+["If x=3, what is 2x²+1?",["7","13","19","10"],1]]},
+{t:'Physics · JEE Foundation',qs:[
+["A body changes velocity from 10 m/s to 20 m/s in 5 s. Acceleration is:",["1 m/s²","2 m/s²","5 m/s²","10 m/s²"],1],
+["Which quantity has both magnitude and direction?",["Speed","Distance","Mass","Velocity"],3],
+["If a force acts in the same direction as displacement, its work is generally:",["Positive","Always zero","Negative","Undefined"],0]]}
+];
+let qi=0,qscore=0,quiz=quizzes[0];
+function startQuiz(){quiz=quizzes[Math.floor(Math.random()*quizzes.length)];qi=0;qscore=0;renderQ();}
+function renderQ(){document.getElementById('quizTitle').textContent=quiz.t;document.getElementById('quizMeta').textContent=`Question ${qi+1} of ${quiz.qs.length} · Score ${qscore}`;
+let q=quiz.qs[qi];let box=document.getElementById('quizBox');box.innerHTML='<div class="quiz-q">'+q[0]+'</div>'+q[1].map((o,i)=>`<button class="option" onclick="answer(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('');
+document.getElementById('quizControls').innerHTML='';}
+function answer(i){let q=quiz.qs[qi],opts=[...document.querySelectorAll('.option')];opts.forEach(x=>x.disabled=true);opts[q[2]].classList.add('correct');if(i!==q[2])opts[i].classList.add('wrong');else{qscore++;score++;document.getElementById('score').textContent=score}
+setTimeout(()=>{qi++;if(qi<quiz.qs.length)renderQ();else{document.getElementById('quizMeta').textContent=`Finished · ${qscore}/${quiz.qs.length}`;document.getElementById('quizControls').innerHTML='<button class="primary" onclick="startQuiz()">New quiz</button>';}},650);}
+</script>
+</body></html>
